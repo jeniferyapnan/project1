@@ -1,21 +1,20 @@
 // Import library yang dibutuhin
 const express = require('express');
 const fs = require('fs');
-const path = require('path'); // <-- KITA TAMBAHIN PETA BIAR GAK NYASAR
+const path = require('path'); // Peta buat nyari file
 
 // Inisialisasi aplikasi server
 const app = express();
 
 // Bikin endpoint utama
 app.get('/api/jkt48', (req, res) => {
-  // Bikin path yang bener dan absolut ke db.json
-  // Ini kayak ngasih alamat lengkap ke ojek online biar gak salah rumah
-  const dbPath = path.join(__dirname, '..', 'db.json');
+  // --- INI BAGIAN YANG DIPERBAIKI ---
+  // Kita suruh dia nyari db.json di 'kamar' yang sama dengan index.js
+  const dbPath = path.join(__dirname, 'db.json');
 
-  // Baca file 'db.json' pake alamat lengkap
+  // Baca file 'db.json' pake alamat yang udah bener
   fs.readFile(dbPath, 'utf8', (err, data) => {
     if (err) {
-      // Kalo error, kita tampilkan detailnya biar tau masalahnya apa
       console.error("Waduh, gabisa baca db.json:", err);
       return res.status(500).json({ error: 'Gagal mengambil data dari database.', details: err.message });
     }
@@ -44,7 +43,7 @@ app.get('/api/jkt48', (req, res) => {
 
 // Endpoint buat ngetes
 app.get('/', (req, res) => {
-  res.send('Server API JKT48 buat Vercel udah nyala! (Versi Perbaikan)');
+  res.send('Server API JKT48 buat Vercel udah nyala! (Versi Perbaikan Final)');
 });
 
 // Jalanin servernya
