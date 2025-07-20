@@ -1,12 +1,12 @@
 {
-  "name": "api-jkt48",
+  "name": "api-jkt48-vercel",
   "version": "1.0.0",
-  "description": "API sederhana buat ngirim gambar JKT48",
+  "description": "API JKT48 di Vercel",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.18.2"
   }
 }
